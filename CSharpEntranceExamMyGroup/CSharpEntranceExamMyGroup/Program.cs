@@ -12,7 +12,13 @@ namespace CSharpEntranceExamMyGroup
         {
             //First Task
 
-            Console.WriteLine("Hello world!");
+            int year = Int32.Parse(Console.ReadLine());
+            int month = Int32.Parse(Console.ReadLine());
+            int day = Int32.Parse(Console.ReadLine());
+
+            DateTime currentDate = new DateTime(year, month, day);
+            currentDate.AddDays(-1);
+            Console.WriteLine("d-MMM-yyyy", currentDate);
         }
     }
 }
