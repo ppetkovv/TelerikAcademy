@@ -12,7 +12,7 @@ namespace CSharpEntranceExamMyGroup
         {
             //First Task
 
-
+            Console.WriteLine("Hello world!");
         }
     }
 }
