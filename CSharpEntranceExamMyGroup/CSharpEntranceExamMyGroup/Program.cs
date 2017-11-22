@@ -51,8 +51,52 @@ namespace CSharpEntranceExamMyGroup
 
             //Third Task
 
+            //    int[] fieldWithCarrots = Console.ReadLine().Split(new char[] { ',', ' ' },StringSplitOptions.RemoveEmptyEntries).Select(item => Int32.Parse(item.ToString())).ToArray();
+            //    if (fieldWithCarrots.Length < 1 || fieldWithCarrots.Length > 10000)
+            //    {
+            //        return;
+            //    }
+            //    int M = Int32.Parse(Console.ReadLine());
+            //    if(M < 1 || M > 500)
+            //    {
+            //        return;
+            //    }
 
+            //    int[] currentDirections = null;
+            //    int bestSum = Int32.MinValue;
+            //    for (int i = 0; i < M; i++)
+            //    {
+            //        currentDirections = Console.ReadLine().Split(new char[] { ' ', ',' },StringSplitOptions.RemoveEmptyEntries).Select(item => Int32.Parse(item.ToString())).ToArray();
+            //        if ((currentDirections.Length > 100) || !currentDirections.All(num => (num >= -1000 && num <= 1000)))
+            //        {
+            //            return;
+            //        }
+            //        int currentDirectionsSum = 0;
+            //        int currentIndex = 0;
+            //        List<int> currentlyUsedIndexes = new List<int>();
+            //        bool mustContinue = true;
+            //        for (;mustContinue;)
+            //        {
+            //            for (int j = 0; j < currentDirections.Length; j++)
+            //            {
+            //                currentDirectionsSum += fieldWithCarrots[currentIndex];
+            //                currentlyUsedIndexes.Add(currentIndex);
+            //                currentIndex += currentDirections[j];
+            //                if((currentIndex < 0 || currentIndex >= fieldWithCarrots.Length)||(currentlyUsedIndexes.Contains(currentIndex)))
+            //                {
+            //                    mustContinue = false;
+            //                    break;
+            //                }
+            //            }
+            //        }
+            //        if(currentDirectionsSum > bestSum)
+            //        {
+            //            bestSum = currentDirectionsSum;
+            //        }
+            //        currentDirectionsSum = 0;
+            //    }
 
+            //    Console.WriteLine(bestSum);
         }
 
         //private static bool FindPrime(int i)
