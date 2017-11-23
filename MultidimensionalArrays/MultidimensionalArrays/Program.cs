@@ -145,395 +145,395 @@ namespace MultidimensionalArrays
 
             //Sixth Task
 
-            int[] nAndM = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
-            int[,] matrix = new int[nAndM[0], nAndM[1]];
+            //int[] nAndM = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
+            //int[,] matrix = new int[nAndM[0], nAndM[1]];
 
-            int[] currentRowNums;
-            for (int row = 0; row < matrix.GetLength(0); row++)
-            {
-                currentRowNums = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
-                for (int col = 0; col < matrix.GetLength(1); col++)
-                {
-                    matrix[row, col] = currentRowNums[col];
-                }
-            }
+            //int[] currentRowNums;
+            //for (int row = 0; row < matrix.GetLength(0); row++)
+            //{
+            //    currentRowNums = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
+            //    for (int col = 0; col < matrix.GetLength(1); col++)
+            //    {
+            //        matrix[row, col] = currentRowNums[col];
+            //    }
+            //}
 
-            List<string> indexes = new List<string>();
-            int bestLength = 0;
-            for (int row = 0; row < matrix.GetLength(0); row++)
-            {
-                for (int col = 0; col < matrix.GetLength(1); col++)
-                {
-                    currentLength++;
-                    Program.RecursionSearching(matrix, row, col, indexes);
-                    if (currentLength > bestLength)
-                    {
-                        bestLength = currentLength;
-                    }
-                    currentLength = 0;
-                }
-            }
+            //List<string> indexes = new List<string>();
+            //int bestLength = 0;
+            //for (int row = 0; row < matrix.GetLength(0); row++)
+            //{
+            //    for (int col = 0; col < matrix.GetLength(1); col++)
+            //    {
+            //        currentLength++;
+            //        Program.RecursionSearching(matrix, row, col, indexes);
+            //        if (currentLength > bestLength)
+            //        {
+            //            bestLength = currentLength;
+            //        }
+            //        currentLength = 0;
+            //    }
+            //}
 
-            Console.WriteLine(bestLength);
+            //Console.WriteLine(bestLength);
         }
 
-        private static void RecursionSearching(int[,] matrix, int row, int col, List<string> indexes)
-        {
-            if ((row - 1 < 0 || matrix[row - 1, col] != matrix[row, col]) && (row + 1 >= matrix.GetLength(0) || matrix[row + 1, col] != matrix[row, col]) && (col - 1 < 0 || matrix[row, col - 1] != matrix[row, col]) && (col + 1 >= matrix.GetLength(1) || matrix[row, col + 1] != matrix[row, col]))
-            {
-                return;
-            }
-            if (row - 1 >= 0 && matrix[row - 1, col] == matrix[row, col] && !indexes.Contains(row - 1 + "" + col))
-            {
-                indexes.Add(row + "" + col);
-                currentLength++;
-                Program.RecursionSearching(matrix, row - 1, col, indexes);
-            }
-            if (row + 1 < matrix.GetLength(0) && matrix[row + 1, col] == matrix[row, col] && !indexes.Contains(row + 1 + "" + col))
-            {
-                indexes.Add(row + "" + col);
-                currentLength++;
-                Program.RecursionSearching(matrix, row + 1, col, indexes);
-            }
-            if (col - 1 >= 0 && matrix[row, col - 1] == matrix[row, col] && !indexes.Contains(row + "" + (col - 1)))
-            {
-                indexes.Add(row + "" + col);
-                currentLength++;
-                Program.RecursionSearching(matrix, row, col - 1, indexes);
-            }
-            if (col + 1 < matrix.GetLength(1) && matrix[row, col + 1] == matrix[row, col] && !indexes.Contains(row + "" + (col + 1)))
-            {
-                indexes.Add(row + "" + col);
-                currentLength++;
-                Program.RecursionSearching(matrix, row, col + 1, indexes);
-            }
-        }
+        //private static void RecursionSearching(int[,] matrix, int row, int col, List<string> indexes)
+        //{
+        //    if ((row - 1 < 0 || matrix[row - 1, col] != matrix[row, col]) && (row + 1 >= matrix.GetLength(0) || matrix[row + 1, col] != matrix[row, col]) && (col - 1 < 0 || matrix[row, col - 1] != matrix[row, col]) && (col + 1 >= matrix.GetLength(1) || matrix[row, col + 1] != matrix[row, col]))
+        //    {
+        //        return;
+        //    }
+        //    if (row - 1 >= 0 && matrix[row - 1, col] == matrix[row, col] && !indexes.Contains(row - 1 + "" + col))
+        //    {
+        //        indexes.Add(row + "" + col);
+        //        currentLength++;
+        //        Program.RecursionSearching(matrix, row - 1, col, indexes);
+        //    }
+        //    if (row + 1 < matrix.GetLength(0) && matrix[row + 1, col] == matrix[row, col] && !indexes.Contains(row + 1 + "" + col))
+        //    {
+        //        indexes.Add(row + "" + col);
+        //        currentLength++;
+        //        Program.RecursionSearching(matrix, row + 1, col, indexes);
+        //    }
+        //    if (col - 1 >= 0 && matrix[row, col - 1] == matrix[row, col] && !indexes.Contains(row + "" + (col - 1)))
+        //    {
+        //        indexes.Add(row + "" + col);
+        //        currentLength++;
+        //        Program.RecursionSearching(matrix, row, col - 1, indexes);
+        //    }
+        //    if (col + 1 < matrix.GetLength(1) && matrix[row, col + 1] == matrix[row, col] && !indexes.Contains(row + "" + (col + 1)))
+        //    {
+        //        indexes.Add(row + "" + col);
+        //        currentLength++;
+        //        Program.RecursionSearching(matrix, row, col + 1, indexes);
+        //    }
+        //}
 
-        private static int BestRightDiagonalsSearch(string[,] matrix)
-        {
-            int bestSum = Int32.MinValue;
-            int currentSum = 1;
+        //private static int BestRightDiagonalsSearch(string[,] matrix)
+        //{
+        //    int bestSum = Int32.MinValue;
+        //    int currentSum = 1;
 
-            for (int row = matrix.GetLength(0) - 2; row >= 0; row--)
-            {
-                for (int secRow = row, col = matrix.GetLength(1)-1; secRow < matrix.GetLength(0) - 1; secRow++, col--)
-                {
-                    if (matrix[secRow, col].Equals(matrix[secRow + 1, col - 1]))
-                    {
-                        currentSum++;
-                    }
-                    else
-                    {
-                        if (currentSum != 1 && currentSum > bestSum)
-                        {
-                            bestSum = currentSum;
-                            currentSum = 1;
-                        }
-                        currentSum = 1;
-                    }
-                }
-                if (currentSum != 1 && currentSum > bestSum)
-                {
-                    bestSum = currentSum;
-                    currentSum = 1;
-                }
-                currentSum = 1;
-            }
+        //    for (int row = matrix.GetLength(0) - 2; row >= 0; row--)
+        //    {
+        //        for (int secRow = row, col = matrix.GetLength(1)-1; secRow < matrix.GetLength(0) - 1; secRow++, col--)
+        //        {
+        //            if (matrix[secRow, col].Equals(matrix[secRow + 1, col - 1]))
+        //            {
+        //                currentSum++;
+        //            }
+        //            else
+        //            {
+        //                if (currentSum != 1 && currentSum > bestSum)
+        //                {
+        //                    bestSum = currentSum;
+        //                    currentSum = 1;
+        //                }
+        //                currentSum = 1;
+        //            }
+        //        }
+        //        if (currentSum != 1 && currentSum > bestSum)
+        //        {
+        //            bestSum = currentSum;
+        //            currentSum = 1;
+        //        }
+        //        currentSum = 1;
+        //    }
 
-            for (int col = matrix.GetLength(1) - 2; col >= 1; col--)
-            {
-                for (int secCol = col, row = 0; secCol >= 1; secCol--,row++)
-                {
-                    if(matrix[row,secCol].Equals(matrix[row+1,secCol-1]))
-                    {
-                        currentSum++;
-                    }
-                    else
-                    {
-                        if (currentSum != 1 && currentSum > bestSum)
-                        {
-                            bestSum = currentSum;
-                            currentSum = 1;
-                        }
-                        currentSum = 1;
-                    }
-                }
-                if (currentSum != 1 && currentSum > bestSum)
-                {
-                    bestSum = currentSum;
-                    currentSum = 1;
-                }
-                currentSum = 1;
-            }
+        //    for (int col = matrix.GetLength(1) - 2; col >= 1; col--)
+        //    {
+        //        for (int secCol = col, row = 0; secCol >= 1; secCol--,row++)
+        //        {
+        //            if(matrix[row,secCol].Equals(matrix[row+1,secCol-1]))
+        //            {
+        //                currentSum++;
+        //            }
+        //            else
+        //            {
+        //                if (currentSum != 1 && currentSum > bestSum)
+        //                {
+        //                    bestSum = currentSum;
+        //                    currentSum = 1;
+        //                }
+        //                currentSum = 1;
+        //            }
+        //        }
+        //        if (currentSum != 1 && currentSum > bestSum)
+        //        {
+        //            bestSum = currentSum;
+        //            currentSum = 1;
+        //        }
+        //        currentSum = 1;
+        //    }
 
-            return bestSum;
-        }
+        //    return bestSum;
+        //}
 
-        private static int BestLeftDiagonalsSearch(string[,] matrix)
-        {
-            int bestSum = Int32.MinValue;
-            int currentSum = 1;
+        //private static int BestLeftDiagonalsSearch(string[,] matrix)
+        //{
+        //    int bestSum = Int32.MinValue;
+        //    int currentSum = 1;
 
-            for (int row = matrix.GetLength(0) - 2; row >= 0; row--)
-            {
-                for (int secRow = row, col = 0; secRow < matrix.GetLength(0) - 1; secRow++, col++)
-                {
-                    if (matrix[secRow, col].Equals(matrix[secRow + 1, col + 1]))
-                    {
-                        currentSum++;
-                    }
-                    else
-                    {
-                        if (currentSum != 1 && currentSum > bestSum)
-                        {
-                            bestSum = currentSum;
-                            currentSum = 1;
-                        }
-                        currentSum = 1;
-                    }
-                }
-                if (currentSum != 1 && currentSum > bestSum)
-                {
-                    bestSum = currentSum;
-                    currentSum = 1;
-                }
-                currentSum = 1;
-            }
+        //    for (int row = matrix.GetLength(0) - 2; row >= 0; row--)
+        //    {
+        //        for (int secRow = row, col = 0; secRow < matrix.GetLength(0) - 1; secRow++, col++)
+        //        {
+        //            if (matrix[secRow, col].Equals(matrix[secRow + 1, col + 1]))
+        //            {
+        //                currentSum++;
+        //            }
+        //            else
+        //            {
+        //                if (currentSum != 1 && currentSum > bestSum)
+        //                {
+        //                    bestSum = currentSum;
+        //                    currentSum = 1;
+        //                }
+        //                currentSum = 1;
+        //            }
+        //        }
+        //        if (currentSum != 1 && currentSum > bestSum)
+        //        {
+        //            bestSum = currentSum;
+        //            currentSum = 1;
+        //        }
+        //        currentSum = 1;
+        //    }
 
-            for (int col = 1; col < matrix.GetLength(1); col++)
-            {
-                for (int secCol = col, row = 0; secCol < matrix.GetLength(1) - 1; secCol++, row++)
-                {
-                    if(matrix[row,secCol].Equals(matrix[row+1,secCol+1]))
-                    {
-                        currentSum++;
-                    }
-                    else
-                    {
-                        if (currentSum != 1 && currentSum > bestSum)
-                        {
-                            bestSum = currentSum;
-                            currentSum = 1;
-                        }
-                        currentSum = 1;
-                    }
-                }
-                if (currentSum != 1 && currentSum > bestSum)
-                {
-                    bestSum = currentSum;
-                    currentSum = 1;
-                }
-                currentSum = 1;
-            }
+        //    for (int col = 1; col < matrix.GetLength(1); col++)
+        //    {
+        //        for (int secCol = col, row = 0; secCol < matrix.GetLength(1) - 1; secCol++, row++)
+        //        {
+        //            if(matrix[row,secCol].Equals(matrix[row+1,secCol+1]))
+        //            {
+        //                currentSum++;
+        //            }
+        //            else
+        //            {
+        //                if (currentSum != 1 && currentSum > bestSum)
+        //                {
+        //                    bestSum = currentSum;
+        //                    currentSum = 1;
+        //                }
+        //                currentSum = 1;
+        //            }
+        //        }
+        //        if (currentSum != 1 && currentSum > bestSum)
+        //        {
+        //            bestSum = currentSum;
+        //            currentSum = 1;
+        //        }
+        //        currentSum = 1;
+        //    }
 
-            return bestSum;
-        }
+        //    return bestSum;
+        //}
 
-        private static int BestVerticalSearch(string[,] matrix)
-        {
-            int bestSum = Int32.MinValue;
-            int currentSum = 1;
+        //private static int BestVerticalSearch(string[,] matrix)
+        //{
+        //    int bestSum = Int32.MinValue;
+        //    int currentSum = 1;
 
-            for (int col = 0; col < matrix.GetLength(1); col++)
-            {
-                for (int row = 1; row < matrix.GetLength(0); row++)
-                {
-                    if (matrix[row, col].Equals(matrix[row - 1, col]))
-                    {
-                        currentSum++;
-                    }
-                    else
-                    {
-                        if (currentSum != 1 && currentSum > bestSum)
-                        {
-                            bestSum = currentSum;
-                            currentSum = 1;
-                        }
-                        currentSum = 1;
-                    }
-                }
-                if (currentSum != 1 && currentSum > bestSum)
-                {
-                    bestSum = currentSum;
-                    currentSum = 1;
-                }
-                currentSum = 1;
-            }
+        //    for (int col = 0; col < matrix.GetLength(1); col++)
+        //    {
+        //        for (int row = 1; row < matrix.GetLength(0); row++)
+        //        {
+        //            if (matrix[row, col].Equals(matrix[row - 1, col]))
+        //            {
+        //                currentSum++;
+        //            }
+        //            else
+        //            {
+        //                if (currentSum != 1 && currentSum > bestSum)
+        //                {
+        //                    bestSum = currentSum;
+        //                    currentSum = 1;
+        //                }
+        //                currentSum = 1;
+        //            }
+        //        }
+        //        if (currentSum != 1 && currentSum > bestSum)
+        //        {
+        //            bestSum = currentSum;
+        //            currentSum = 1;
+        //        }
+        //        currentSum = 1;
+        //    }
 
-            return bestSum;
-        }
+        //    return bestSum;
+        //}
 
-        private static int BestHorizontalSearch(string[,] matrix)
-        {
-            int bestSum = Int32.MinValue;
-            int currentSum = 1;
+        //private static int BestHorizontalSearch(string[,] matrix)
+        //{
+        //    int bestSum = Int32.MinValue;
+        //    int currentSum = 1;
 
-            for (int row = 0; row < matrix.GetLength(0); row++)
-            {
-                for (int col = 1; col < matrix.GetLength(1); col++)
-                {
-                    if (matrix[row, col].Equals(matrix[row, col - 1]))
-                    {
-                        currentSum++;
-                    }
-                    else
-                    {
-                        if (currentSum != 1 && currentSum > bestSum)
-                        {
-                            bestSum = currentSum;
-                            currentSum = 1;
-                        }
-                        currentSum = 1;
-                    }
-                }
-                if (currentSum != 1 && currentSum > bestSum)
-                {
-                    bestSum = currentSum;
-                    currentSum = 1;
-                }
-                currentSum = 1;
-            }
-            return bestSum;
-        }
+        //    for (int row = 0; row < matrix.GetLength(0); row++)
+        //    {
+        //        for (int col = 1; col < matrix.GetLength(1); col++)
+        //        {
+        //            if (matrix[row, col].Equals(matrix[row, col - 1]))
+        //            {
+        //                currentSum++;
+        //            }
+        //            else
+        //            {
+        //                if (currentSum != 1 && currentSum > bestSum)
+        //                {
+        //                    bestSum = currentSum;
+        //                    currentSum = 1;
+        //                }
+        //                currentSum = 1;
+        //            }
+        //        }
+        //        if (currentSum != 1 && currentSum > bestSum)
+        //        {
+        //            bestSum = currentSum;
+        //            currentSum = 1;
+        //        }
+        //        currentSum = 1;
+        //    }
+        //    return bestSum;
+        //}
 
-        private static void FillMatrixUsingD(int[,] matrix)
-        {
-            int row = 0;
-            int col = 0;
+        //private static void FillMatrixUsingD(int[,] matrix)
+        //{
+        //    int row = 0;
+        //    int col = 0;
 
-            bool isDown = true;
-            bool isRight = false;
-            bool isUp = false;
-            bool isLeft = false;
+        //    bool isDown = true;
+        //    bool isRight = false;
+        //    bool isUp = false;
+        //    bool isLeft = false;
 
-            int counter = 1;
+        //    int counter = 1;
 
-            while (counter <= matrix.GetLength(0) * matrix.GetLength(0))
-            {
-                matrix[row, col] = counter;
+        //    while (counter <= matrix.GetLength(0) * matrix.GetLength(0))
+        //    {
+        //        matrix[row, col] = counter;
 
-                if (isDown)
-                {
-                    if (row + 1 >= matrix.GetLength(0) || matrix[row + 1, col] != 0)
-                    {
-                        isDown = false;
-                        isRight = true;
-                        col++;
-                    }
-                    else
-                    {
-                        row++;
-                    }
-                }
-                else if (isRight)
-                {
-                    if (col + 1 >= matrix.GetLength(1) || matrix[row, col + 1] != 0)
-                    {
-                        isRight = false;
-                        isUp = true;
-                        row--;
-                    }
-                    else
-                    {
-                        col++;
-                    }
-                }
-                else if (isUp)
-                {
-                    if (row - 1 < 0 || matrix[row - 1, col] != 0)
-                    {
-                        isUp = false;
-                        isLeft = true;
-                        col--;
-                    }
-                    else
-                    {
-                        row--;
-                    }
-                }
-                else if (isLeft)
-                {
-                    if (col - 1 < 0 || matrix[row, col - 1] != 0)
-                    {
-                        isLeft = false;
-                        isDown = true;
-                        row++;
-                    }
-                    else
-                    {
-                        col--;
-                    }
-                }
-                counter++;
-            }
-        }
+        //        if (isDown)
+        //        {
+        //            if (row + 1 >= matrix.GetLength(0) || matrix[row + 1, col] != 0)
+        //            {
+        //                isDown = false;
+        //                isRight = true;
+        //                col++;
+        //            }
+        //            else
+        //            {
+        //                row++;
+        //            }
+        //        }
+        //        else if (isRight)
+        //        {
+        //            if (col + 1 >= matrix.GetLength(1) || matrix[row, col + 1] != 0)
+        //            {
+        //                isRight = false;
+        //                isUp = true;
+        //                row--;
+        //            }
+        //            else
+        //            {
+        //                col++;
+        //            }
+        //        }
+        //        else if (isUp)
+        //        {
+        //            if (row - 1 < 0 || matrix[row - 1, col] != 0)
+        //            {
+        //                isUp = false;
+        //                isLeft = true;
+        //                col--;
+        //            }
+        //            else
+        //            {
+        //                row--;
+        //            }
+        //        }
+        //        else if (isLeft)
+        //        {
+        //            if (col - 1 < 0 || matrix[row, col - 1] != 0)
+        //            {
+        //                isLeft = false;
+        //                isDown = true;
+        //                row++;
+        //            }
+        //            else
+        //            {
+        //                col--;
+        //            }
+        //        }
+        //        counter++;
+        //    }
+        //}
 
-        private static void FillMatrixUsingC(int[,] matrix)
-        {
-            int counter = 1;
-            for (int row = matrix.GetLength(0) - 1; row >= 0; row--)
-            {
-                for (int secRow = row, col = 0; secRow < matrix.GetLength(0); secRow++, col++, counter++)
-                {
-                    matrix[secRow, col] = counter;
-                }
-            }
+        //private static void FillMatrixUsingC(int[,] matrix)
+        //{
+        //    int counter = 1;
+        //    for (int row = matrix.GetLength(0) - 1; row >= 0; row--)
+        //    {
+        //        for (int secRow = row, col = 0; secRow < matrix.GetLength(0); secRow++, col++, counter++)
+        //        {
+        //            matrix[secRow, col] = counter;
+        //        }
+        //    }
 
-            for (int col = 1; col < matrix.GetLength(1); col++)
-            {
-                for (int secCol = col, row = 0; secCol < matrix.GetLength(1); secCol++, row++, counter++)
-                {
-                    matrix[row, secCol] = counter;
-                }
-            }
-        }
+        //    for (int col = 1; col < matrix.GetLength(1); col++)
+        //    {
+        //        for (int secCol = col, row = 0; secCol < matrix.GetLength(1); secCol++, row++, counter++)
+        //        {
+        //            matrix[row, secCol] = counter;
+        //        }
+        //    }
+        //}
 
-        private static void FillMatrixUsingB(int[,] matrix)
-        {
-            int counter = 1;
-            for (int col = 0; col < matrix.GetLength(1); col++)
-            {
-                if (col % 2 == 0)
-                {
-                    for (int row = 0; row < matrix.GetLength(0); row++, counter++)
-                    {
-                        matrix[row, col] = counter;
-                    }
-                }
-                else
-                {
-                    for (int row = matrix.GetLength(0) - 1; row >= 0; row--,counter++)
-                    {
-                        matrix[row, col] = counter;
-                    }
-                }
-            }
-        }
+        //private static void FillMatrixUsingB(int[,] matrix)
+        //{
+        //    int counter = 1;
+        //    for (int col = 0; col < matrix.GetLength(1); col++)
+        //    {
+        //        if (col % 2 == 0)
+        //        {
+        //            for (int row = 0; row < matrix.GetLength(0); row++, counter++)
+        //            {
+        //                matrix[row, col] = counter;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            for (int row = matrix.GetLength(0) - 1; row >= 0; row--,counter++)
+        //            {
+        //                matrix[row, col] = counter;
+        //            }
+        //        }
+        //    }
+        //}
 
-        private static void FillMatrixUsingA(int[,] matrix)
-        {
-            int counter = 1;
-            for (int col = 0; col < matrix.GetLength(1); col++)
-            {
-                for (int row = 0; row < matrix.GetLength(0); row++,counter++)
-                {
-                    matrix[row, col] = counter;
-                }
-            }
-        }
+        //private static void FillMatrixUsingA(int[,] matrix)
+        //{
+        //    int counter = 1;
+        //    for (int col = 0; col < matrix.GetLength(1); col++)
+        //    {
+        //        for (int row = 0; row < matrix.GetLength(0); row++,counter++)
+        //        {
+        //            matrix[row, col] = counter;
+        //        }
+        //    }
+        //}
 
-        private static void PrintMatrix(int[,] matrix)
-        {
-            for (int row = 0; row < matrix.GetLength(0); row++)
-            {
-                Console.Write(matrix[row, 0]);
-                for (int col = 1; col < matrix.GetLength(1); col++)
-                {
-                    Console.Write(" " + matrix[row, col]);
-                }
-                Console.WriteLine();
-            }
-        }
+        //private static void PrintMatrix(int[,] matrix)
+        //{
+        //    for (int row = 0; row < matrix.GetLength(0); row++)
+        //    {
+        //        Console.Write(matrix[row, 0]);
+        //        for (int col = 1; col < matrix.GetLength(1); col++)
+        //        {
+        //            Console.Write(" " + matrix[row, col]);
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
 
     }
 }
