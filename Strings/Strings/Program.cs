@@ -10,6 +10,7 @@ namespace Strings
     {
         static void Main(string[] args)
         {
+            //Here will be the solutions of all string tasks!!!
         }
     }
 }
