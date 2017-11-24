@@ -8,7 +8,6 @@ namespace MultidimensionalArrays
 {
     class Program
     {
-        private static int currentLength;
         static void Main(string[] args)
         {
 
@@ -75,7 +74,7 @@ namespace MultidimensionalArrays
             //Third Task
 
             //int[] nAndM = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
-            //if(nAndM[0] < 3 || nAndM[1] > 128)
+            //if (nAndM[0] < 3 || nAndM[1] > 128)
             //{
             //    return;
             //}
@@ -175,6 +174,9 @@ namespace MultidimensionalArrays
             //}
 
             //Console.WriteLine(bestLength);
+
+
+
         }
 
         //private static void RecursionSearching(int[,] matrix, int row, int col, List<string> indexes)
@@ -211,59 +213,39 @@ namespace MultidimensionalArrays
 
         //private static int BestRightDiagonalsSearch(string[,] matrix)
         //{
-        //    int bestSum = Int32.MinValue;
+        //    int bestSum = 0;
         //    int currentSum = 1;
 
-        //    for (int row = matrix.GetLength(0) - 2; row >= 0; row--)
+        //    for (int col = matrix.GetLength(1) - 2; col >= 0; col--)
         //    {
-        //        for (int secRow = row, col = matrix.GetLength(1)-1; secRow < matrix.GetLength(0) - 1; secRow++, col--)
+        //        for (int currentCol = col, row = 0; currentCol < matrix.GetLength(1) - 1 && row < matrix.GetLength(0) - 1; currentCol++, row++)
         //        {
-        //            if (matrix[secRow, col].Equals(matrix[secRow + 1, col - 1]))
+        //            if (matrix[row, currentCol].Equals(matrix[row + 1, col + 1]))
         //            {
         //                currentSum++;
         //            }
         //            else
         //            {
-        //                if (currentSum != 1 && currentSum > bestSum)
-        //                {
-        //                    bestSum = currentSum;
-        //                    currentSum = 1;
-        //                }
-        //                currentSum = 1;
+        //                CheckForBestSum(ref bestSum, ref currentSum);
         //            }
         //        }
-        //        if (currentSum != 1 && currentSum > bestSum)
-        //        {
-        //            bestSum = currentSum;
-        //            currentSum = 1;
-        //        }
-        //        currentSum = 1;
+        //        CheckForBestSum(ref bestSum, ref currentSum);
         //    }
 
-        //    for (int col = matrix.GetLength(1) - 2; col >= 1; col--)
+        //    for (int row = 1; row < matrix.GetLength(0) - 1; row++)
         //    {
-        //        for (int secCol = col, row = 0; secCol >= 1; secCol--,row++)
+        //        for (int currentRow = row, col = 0; currentRow < matrix.GetLength(0) - 1 && col < matrix.GetLength(1) - 1; currentRow++, col++)
         //        {
-        //            if(matrix[row,secCol].Equals(matrix[row+1,secCol-1]))
+        //            if (matrix[currentRow, col].Equals(matrix[currentRow + 1, col + 1]))
         //            {
         //                currentSum++;
         //            }
         //            else
         //            {
-        //                if (currentSum != 1 && currentSum > bestSum)
-        //                {
-        //                    bestSum = currentSum;
-        //                    currentSum = 1;
-        //                }
-        //                currentSum = 1;
+        //                CheckForBestSum(ref bestSum, ref currentSum);
         //            }
         //        }
-        //        if (currentSum != 1 && currentSum > bestSum)
-        //        {
-        //            bestSum = currentSum;
-        //            currentSum = 1;
-        //        }
-        //        currentSum = 1;
+        //        CheckForBestSum(ref bestSum, ref currentSum);
         //    }
 
         //    return bestSum;
@@ -271,59 +253,39 @@ namespace MultidimensionalArrays
 
         //private static int BestLeftDiagonalsSearch(string[,] matrix)
         //{
-        //    int bestSum = Int32.MinValue;
+        //    int bestSum = 0;
         //    int currentSum = 1;
-
-        //    for (int row = matrix.GetLength(0) - 2; row >= 0; row--)
-        //    {
-        //        for (int secRow = row, col = 0; secRow < matrix.GetLength(0) - 1; secRow++, col++)
-        //        {
-        //            if (matrix[secRow, col].Equals(matrix[secRow + 1, col + 1]))
-        //            {
-        //                currentSum++;
-        //            }
-        //            else
-        //            {
-        //                if (currentSum != 1 && currentSum > bestSum)
-        //                {
-        //                    bestSum = currentSum;
-        //                    currentSum = 1;
-        //                }
-        //                currentSum = 1;
-        //            }
-        //        }
-        //        if (currentSum != 1 && currentSum > bestSum)
-        //        {
-        //            bestSum = currentSum;
-        //            currentSum = 1;
-        //        }
-        //        currentSum = 1;
-        //    }
 
         //    for (int col = 1; col < matrix.GetLength(1); col++)
         //    {
-        //        for (int secCol = col, row = 0; secCol < matrix.GetLength(1) - 1; secCol++, row++)
+        //        for (int currentCol = col, row = 0; currentCol > 0 && row < matrix.GetLength(0) - 1; currentCol--, row++)
         //        {
-        //            if(matrix[row,secCol].Equals(matrix[row+1,secCol+1]))
+        //            if (matrix[row, currentCol].Equals(matrix[row + 1, currentCol - 1]))
         //            {
         //                currentSum++;
         //            }
         //            else
         //            {
-        //                if (currentSum != 1 && currentSum > bestSum)
-        //                {
-        //                    bestSum = currentSum;
-        //                    currentSum = 1;
-        //                }
-        //                currentSum = 1;
+        //                CheckForBestSum(ref bestSum, ref currentSum);
         //            }
         //        }
-        //        if (currentSum != 1 && currentSum > bestSum)
+        //        CheckForBestSum(ref bestSum, ref currentSum);
+        //    }
+
+        //    for (int row = 1; row < matrix.GetLength(0) - 1; row++)
+        //    {
+        //        for (int currentRow = row, col = matrix.GetLength(1)-1; currentRow < matrix.GetLength(0) - 1 && col > 0; currentRow++, col--)
         //        {
-        //            bestSum = currentSum;
-        //            currentSum = 1;
+        //            if (matrix[currentRow, col].Equals(matrix[currentRow + 1, col - 1]))
+        //            {
+        //                currentSum++;
+        //            }
+        //            else
+        //            {
+        //                CheckForBestSum(ref bestSum, ref currentSum);
+        //            }
         //        }
-        //        currentSum = 1;
+        //        CheckForBestSum(ref bestSum, ref currentSum);
         //    }
 
         //    return bestSum;
@@ -344,20 +306,10 @@ namespace MultidimensionalArrays
         //            }
         //            else
         //            {
-        //                if (currentSum != 1 && currentSum > bestSum)
-        //                {
-        //                    bestSum = currentSum;
-        //                    currentSum = 1;
-        //                }
-        //                currentSum = 1;
+        //                CheckForBestSum(ref bestSum, ref currentSum);
         //            }
         //        }
-        //        if (currentSum != 1 && currentSum > bestSum)
-        //        {
-        //            bestSum = currentSum;
-        //            currentSum = 1;
-        //        }
-        //        currentSum = 1;
+        //        CheckForBestSum(ref bestSum, ref currentSum);
         //    }
 
         //    return bestSum;
@@ -378,22 +330,22 @@ namespace MultidimensionalArrays
         //            }
         //            else
         //            {
-        //                if (currentSum != 1 && currentSum > bestSum)
-        //                {
-        //                    bestSum = currentSum;
-        //                    currentSum = 1;
-        //                }
-        //                currentSum = 1;
+        //                CheckForBestSum(ref bestSum, ref currentSum);
         //            }
         //        }
-        //        if (currentSum != 1 && currentSum > bestSum)
-        //        {
-        //            bestSum = currentSum;
-        //            currentSum = 1;
-        //        }
-        //        currentSum = 1;
+        //        CheckForBestSum(ref bestSum, ref currentSum);
         //    }
         //    return bestSum;
+        //}
+
+        //private static void CheckForBestSum(ref int bestSum, ref int currentSum)
+        //{
+        //    if (currentSum != 1 && currentSum > bestSum)
+        //    {
+        //        bestSum = currentSum;
+        //        currentSum = 1;
+        //    }
+        //    currentSum = 1;
         //}
 
         //private static void FillMatrixUsingD(int[,] matrix)
