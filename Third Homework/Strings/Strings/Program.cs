@@ -218,15 +218,7 @@ namespace Strings
             //Nineth Task
 
             //string input = Console.ReadLine();
-            //MatchCollection allMatches = Regex.Matches(input, "<a href=[\'\"]?([^\'\" >]+)\">([^<]+)</a>");
-            //StringBuilder tempValue = new StringBuilder();
-            //for (int i = 0; i < allMatches.Count; i++)
-            //{
-            //    string textForReplacing = allMatches[i].Value;
-            //    tempValue.Append("[").Append(allMatches[i].Groups[2]).Append("]").Append("(").Append(allMatches[i].Groups[1]).Append(")");
-            //    input = input.Replace(textForReplacing, tempValue.ToString());
-            //    tempValue.Clear();
-            //}
+            //input = Regex.Replace(input, "(<a href=\")(.*?)(\">)(.*?)(</a>)", m=>string.Format("[{0}]({1})",m.Groups[4].Value,m.Groups[2].Value));
             //Console.WriteLine(input);
 
             //Tenth Task
