@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Methods
+namespace SeventhTask
 {
     class Program
     {
         static void Main(string[] args)
         {
+            decimal decimalNumber = Decimal.Parse(Console.ReadLine());
+            Console.WriteLine(new string(decimalNumber.ToString().Reverse().ToArray()));
         }
     }
 }
