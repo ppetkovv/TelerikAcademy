@@ -8,6 +8,81 @@ namespace MultidimensionalArrays
 {
     class Program
     {
+        //Sixth Task
+
+        //private static int[,] originalMatrix;
+        //private static bool[,] usedIndexes;
+        //private static int currentLength;
+        //private static int bestLength;
+
+        //Sixth Task --- My Way
+
+        //private static int[,] matrix;
+        //private static bool[,] usedIndex;
+        //private static int bestLength;
+        //private static int currentLength;
+        //private static int targetValue;
+
+        //Seventh Task
+
+        //private static int[] rows = { -1, -1, 1, 1 };
+        //private static int[] cols = { -1, 1, 1, -1 };
+
+        //private static int GetMoves(string dir)
+        //{
+        //    switch (dir)
+        //    {
+        //        case "LU":
+        //            return 0;
+        //        case "UL":
+        //            return 0;
+        //        case "UR":
+        //            return 1;
+        //        case "RU":
+        //            return 1;
+        //        case "DR":
+        //            return 2;
+        //        case "RD":
+        //            return 2;
+        //        case "DL":
+        //            return 3;
+        //        case "LD":
+        //            return 3;
+        //        default:
+        //            throw new ArgumentException();
+        //    }
+        //}
+
+        //Seventh Task --- My Way
+
+        //private static int[] rows = { -1, -1, 1, 1};
+        //private static int[] cols = { 1, -1, -1, 1 };
+
+        //private static int GetMovesCount(string dir)
+        //{
+        //    switch (dir)
+        //    {
+        //        case "RU":
+        //            return 0;
+        //        case "UR":
+        //            return 0;
+        //        case "LU":
+        //            return 1;
+        //        case "UL":
+        //            return 1;
+        //        case "DL":
+        //            return 2;
+        //        case "LD":
+        //            return 2;
+        //        case "DR":
+        //            return 3;
+        //        case "RD":
+        //            return 3;
+        //        default:
+        //            throw new ArgumentException();
+        //    }
+        //}
+
         static void Main(string[] args)
         {
 
@@ -144,71 +219,230 @@ namespace MultidimensionalArrays
 
             //Sixth Task
 
+            //Read the matrix
             //int[] nAndM = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
-            //int[,] matrix = new int[nAndM[0], nAndM[1]];
+            //originalMatrix = new int[nAndM[0], nAndM[1]];
+            //usedIndexes = new bool[nAndM[0], nAndM[1]];
 
+            ////Fill the matrix
             //int[] currentRowNums;
-            //for (int row = 0; row < matrix.GetLength(0); row++)
+            //for (int row = 0; row < originalMatrix.GetLength(0); row++)
             //{
             //    currentRowNums = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
-            //    for (int col = 0; col < matrix.GetLength(1); col++)
+            //    for (int col = 0; col < originalMatrix.GetLength(1); col++)
             //    {
-            //        matrix[row, col] = currentRowNums[col];
+            //        originalMatrix[row, col] = currentRowNums[col];
             //    }
             //}
 
-            //List<string> indexes = new List<string>();
-            //int bestLength = 0;
-            //for (int row = 0; row < matrix.GetLength(0); row++)
+            ////Traverse the matrix
+            //for (int row = 0; row < originalMatrix.GetLength(0); row++)
             //{
-            //    for (int col = 0; col < matrix.GetLength(1); col++)
+            //    for (int col = 0; col < originalMatrix.GetLength(1); col++)
             //    {
-            //        currentLength++;
-            //        Program.RecursionSearching(matrix, row, col, indexes);
-            //        if (currentLength > bestLength)
-            //        {
-            //            bestLength = currentLength;
-            //        }
             //        currentLength = 0;
+            //        Program.RecursionSearching(originalMatrix, row, col, originalMatrix[row, col]);
             //    }
             //}
 
             //Console.WriteLine(bestLength);
 
+            //Seventh Task --- Marto's Way
 
+            //int[] arrNum = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
+            //int row = arrNum[0];
+            //int col = arrNum[1];
+
+            //int[,] matrix = new int[row, col];
+
+            //for (int i = row - 1; i >= 0; i--)
+            //{
+            //    for (int j = 0; j < col; j++)
+            //    {
+            //        matrix[i, j] = (row - 1 - i) * 3 + (j * 3);
+            //    }
+            //}
+
+            //int movesCount = Int32.Parse(Console.ReadLine());
+            //int currentRow = matrix.GetLength(0)-1;
+            //int currentCol = 0;
+            //int sum = 0;
+            //for (int i = 0; i < movesCount; i++)
+            //{
+            //    var input = Console.ReadLine().Split();
+            //    var dir = input[0];
+            //    var repeat = Int32.Parse(input[1]);
+
+            //    var moveDir = GetMoves(dir);
+
+            //    for (int j = 0; j < repeat - 1; j++)
+            //    {
+            //        currentRow += rows[moveDir];
+            //        currentCol += cols[moveDir];
+
+            //        if(currentRow < 0 || currentRow >= matrix.GetLength(0) || currentCol < 0 || currentCol >= matrix.GetLength(1))
+            //        {
+            //            currentRow -= rows[moveDir];
+            //            currentCol -= cols[moveDir];
+            //            break;
+            //        }
+            //        sum += matrix[currentRow, currentCol];
+            //        matrix[currentRow, currentCol] = 0;
+            //    }
+            //}
+            //Console.WriteLine(sum);
+
+            //Seventh Task --- My way
+
+            //int[] matrixLength = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
+            //int matrixRows = matrixLength[0];
+            //int matrixCols = matrixLength[1];
+
+            //int[,] mainMatrix = new int[matrixRows, matrixCols];
+            //int mainCounter = -3;
+            //int counter = 0;
+
+            //for (int row = mainMatrix.GetLength(0) - 1; row >= 0; row--)
+            //{
+            //    mainCounter += 3;
+            //    counter = mainCounter;
+            //    for (int col = 0; col < mainMatrix.GetLength(1); col++)
+            //    {
+            //        mainMatrix[row, col] = counter;
+            //        counter += 3;
+            //    }
+            //}
+
+            //int movesCount = Int32.Parse(Console.ReadLine());
+
+            //string[] data;
+            //string direction;
+            //int moves;
+            //int sum = 0;
+            //int currentRow = mainMatrix.GetLength(0) - 1;
+            //int currentCol = 0;
+            //for (int i = 0; i < movesCount; i++)
+            //{
+            //    data = Console.ReadLine().Split().ToArray();
+            //    direction = data[0];
+            //    moves = Int32.Parse(data[1]);
+
+            //    for (int j = 0; j < moves - 1; j++)
+            //    {
+            //        currentRow += rows[GetMovesCount(direction)];
+            //        currentCol += cols[GetMovesCount(direction)];
+
+            //        if (currentRow < 0 || currentRow >= mainMatrix.GetLength(0) || currentCol < 0 || currentCol >= mainMatrix.GetLength(1))
+            //        {
+            //            currentRow -= rows[GetMovesCount(direction)];
+            //            currentCol -= cols[GetMovesCount(direction)];
+            //            break;
+            //        }
+            //        sum += mainMatrix[currentRow, currentCol];
+            //        mainMatrix[currentRow, currentCol] = 0;
+            //    }
+            //}
+            //Console.WriteLine(sum);
+
+            //for (int row = 0; row < mainMatrix.GetLength(0); row++)
+            //{
+            //    for (int col = 0; col < mainMatrix.GetLength(1); col++)
+            //    {
+            //        Console.Write(mainMatrix[row, col] + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+
+            //Sixth Task --- My Way
+
+            //int[] matrixSizes = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
+            //matrix = new int[matrixSizes[0], matrixSizes[1]];
+            //usedIndex = new bool[matrixSizes[0], matrixSizes[1]];
+
+            //int[] currentRow;
+            //for (int row = 0; row < matrix.GetLength(0); row++)
+            //{
+            //    currentRow = Console.ReadLine().Split().Select(Int32.Parse).ToArray();
+            //    for (int col = 0; col < matrix.GetLength(1); col++)
+            //    {
+            //        matrix[row, col] = currentRow[col];
+            //    }
+            //}
+
+            //for (int row = 0; row < matrix.GetLength(0); row++)
+            //{
+            //    for (int col = 0; col < matrix.GetLength(1); col++)
+            //    {
+            //        currentLength = 0;
+            //        Program.Recursion(matrix, row, col, matrix[row, col]);
+            //    }
+            //}
+
+            //Console.WriteLine(Program.bestLength);
 
         }
 
-        //private static void RecursionSearching(int[,] matrix, int row, int col, List<string> indexes)
+        //private static void Recursion(int[,] matrix, int row, int col, int targetValue)
         //{
-        //    if ((row - 1 < 0 || matrix[row - 1, col] != matrix[row, col]) && (row + 1 >= matrix.GetLength(0) || matrix[row + 1, col] != matrix[row, col]) && (col - 1 < 0 || matrix[row, col - 1] != matrix[row, col]) && (col + 1 >= matrix.GetLength(1) || matrix[row, col + 1] != matrix[row, col]))
+        //    if (row < 0 || row >= matrix.GetLength(0) || col < 0 || col >= matrix.GetLength(1))
         //    {
         //        return;
         //    }
-        //    if (row - 1 >= 0 && matrix[row - 1, col] == matrix[row, col] && !indexes.Contains(row - 1 + "" + col))
+        //    if (matrix[row, col] != targetValue)
         //    {
-        //        indexes.Add(row + "" + col);
-        //        currentLength++;
-        //        Program.RecursionSearching(matrix, row - 1, col, indexes);
+        //        return;
         //    }
-        //    if (row + 1 < matrix.GetLength(0) && matrix[row + 1, col] == matrix[row, col] && !indexes.Contains(row + 1 + "" + col))
+        //    if (usedIndex[row, col])
         //    {
-        //        indexes.Add(row + "" + col);
-        //        currentLength++;
-        //        Program.RecursionSearching(matrix, row + 1, col, indexes);
+        //        return;
         //    }
-        //    if (col - 1 >= 0 && matrix[row, col - 1] == matrix[row, col] && !indexes.Contains(row + "" + (col - 1)))
+
+        //    currentLength++;
+        //    bestLength = bestLength < currentLength ? currentLength : bestLength;
+        //    usedIndex[row, col] = true;
+
+        //    Program.Recursion(matrix, row + 1, col, targetValue);
+        //    Program.Recursion(matrix, row - 1, col, targetValue);
+        //    Program.Recursion(matrix, row, col + 1, targetValue);
+        //    Program.Recursion(matrix, row, col - 1, targetValue);
+        //}
+
+        //private static void PrintMatrix(int[,] matrix)
+        //{
+        //    for (int i = 0; i < matrix.GetLength(0); i++)
         //    {
-        //        indexes.Add(row + "" + col);
-        //        currentLength++;
-        //        Program.RecursionSearching(matrix, row, col - 1, indexes);
+        //        Console.Write(matrix[i,0]);
+        //        for (int j = 1; j < matrix.GetLength(1); j++)
+        //        {
+        //            Console.Write(" " + matrix[i,j]);
+        //        }
+        //        Console.WriteLine();
         //    }
-        //    if (col + 1 < matrix.GetLength(1) && matrix[row, col + 1] == matrix[row, col] && !indexes.Contains(row + "" + (col + 1)))
+        //}
+
+        //private static void RecursionSearching(int[,] matrix, int row, int col, int targetValue)
+        //{
+        //    if (row < 0 || col < 0 || row >= matrix.GetLength(0) || col >= matrix.GetLength(1))
         //    {
-        //        indexes.Add(row + "" + col);
-        //        currentLength++;
-        //        Program.RecursionSearching(matrix, row, col + 1, indexes);
+        //        return;
         //    }
+        //    if(matrix[row,col] != targetValue)
+        //    {
+        //        return;
+        //    }
+        //    if(usedIndexes[row,col])
+        //    {
+        //        return;
+        //    }
+        //    currentLength++;
+        //    bestLength = bestLength < currentLength ? currentLength : bestLength;
+        //    usedIndexes[row, col] = true;
+
+        //    Program.RecursionSearching(matrix, row + 1, col, targetValue);
+        //    Program.RecursionSearching(matrix, row - 1, col, targetValue);
+        //    Program.RecursionSearching(matrix, row, col + 1, targetValue);
+        //    Program.RecursionSearching(matrix, row, col - 1, targetValue);
         //}
 
         //private static int BestRightDiagonalsSearch(string[,] matrix)
