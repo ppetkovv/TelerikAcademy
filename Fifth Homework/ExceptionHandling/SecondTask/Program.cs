@@ -10,30 +10,36 @@ namespace SecondTask
     {
         static void Main(string[] args)
         {
-            Program.ReadNumber();
+            try
+            {
+                Program.ReadNumber();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Exception");
+            }
         }
 
         private static void ReadNumber()
         {
-            int[] arrayOfNums = new int[10];
-            for (int i = 0; i < arrayOfNums.Length; i++)
+            int[] arrayOfNums = { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100 };
+            for (int i = 1; i < arrayOfNums.Length - 1; i++)
             {
-                arrayOfNums[i] = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    arrayOfNums[i] = Int32.Parse(Console.ReadLine());
+                    if (arrayOfNums[i] <= arrayOfNums[i - 1])
+                    {
+                        throw new ArgumentException();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new Exception();
+                }
             }
 
-            if (!arrayOfNums.OrderBy(x => x).SequenceEqual(arrayOfNums))
-            {
-                throw new FormatException();
-            }
-
-            StringBuilder result = new StringBuilder();
-            result.Append("1 < ");
-            for (int i = 0; i < arrayOfNums.Length; i++)
-            {
-                result.Append(arrayOfNums[i]).Append(" < ");
-            }
-            result.Append("100");
-            Console.WriteLine(result.ToString());
+            Console.WriteLine(string.Join(" < ", arrayOfNums.Select(elem => elem.ToString()).ToArray()));
         }
     }
 }

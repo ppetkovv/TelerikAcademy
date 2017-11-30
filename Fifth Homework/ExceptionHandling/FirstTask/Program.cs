@@ -21,7 +21,7 @@ namespace FirstTask
 
             } catch (FormatException ex)
             {
-                ex = new FormatException("Invalid number!");
+                ex = new FormatException("Invalid number");
                 Console.WriteLine(ex.Message);
             }
             finally
