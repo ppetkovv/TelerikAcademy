@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeNumbersInInterval", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinglyLinkedList", "SinglyLinkedList\SinglyLinkedList.csproj", "{60CB10FB-998A-4DCA-9D09-AEE8DE41B67B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverseLinkedList", "ReverseLinkedList\ReverseLinkedList.csproj", "{EDF6A9DB-1465-4F54-80C7-31A9811D0433}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{60CB10FB-998A-4DCA-9D09-AEE8DE41B67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60CB10FB-998A-4DCA-9D09-AEE8DE41B67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60CB10FB-998A-4DCA-9D09-AEE8DE41B67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF6A9DB-1465-4F54-80C7-31A9811D0433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF6A9DB-1465-4F54-80C7-31A9811D0433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF6A9DB-1465-4F54-80C7-31A9811D0433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF6A9DB-1465-4F54-80C7-31A9811D0433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
