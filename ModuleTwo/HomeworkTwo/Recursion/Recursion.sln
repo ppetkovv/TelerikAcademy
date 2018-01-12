@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursion", "Recursion\Recursion.csproj", "{3F401CDD-0C40-40C8-8AE8-0E76C3BFB526}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstTask", "FirstTask\FirstTask.csproj", "{59389455-61C2-4FD5-BCE8-7C455AF25E52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3F401CDD-0C40-40C8-8AE8-0E76C3BFB526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F401CDD-0C40-40C8-8AE8-0E76C3BFB526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F401CDD-0C40-40C8-8AE8-0E76C3BFB526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59389455-61C2-4FD5-BCE8-7C455AF25E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59389455-61C2-4FD5-BCE8-7C455AF25E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59389455-61C2-4FD5-BCE8-7C455AF25E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59389455-61C2-4FD5-BCE8-7C455AF25E52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
