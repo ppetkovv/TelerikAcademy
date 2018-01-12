@@ -117,11 +117,6 @@ namespace Swappings
             int N = Int32.Parse(Console.ReadLine());
             int[] nums = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
 
-            if(N < 0 || N > 100000)
-            {
-                Environment.Exit(-1);
-            }
-
             ListNode first = new ListNode(1);
             first.Previous = null;
             ListNode currentNode = first;
