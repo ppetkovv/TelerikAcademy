@@ -1,4 +1,7 @@
-﻿//using System;
+﻿
+//First Way - 30 points
+
+//using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -102,156 +105,270 @@
 //    }
 //}
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Swappings
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int N = Int32.Parse(Console.ReadLine());
-            int[] nums = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
+//Second Way - 40 points
 
-            ListNode first = new ListNode(1);
-            first.Previous = null;
-            ListNode currentNode = first;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-            ListNode last = new ListNode(N);
-            last.Next = null;
+//namespace Swappings
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            int N = Int32.Parse(Console.ReadLine());
+//            int[] nums = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
 
-            for (int i = 2; i < N; i++)
-            {
-                currentNode.Next = new ListNode(i);
-                currentNode.Next.Previous = currentNode;
-                currentNode = currentNode.Next;
-            }
+//            ListNode first = new ListNode(1);
+//            first.Previous = null;
+//            ListNode currentNode = first;
 
-            currentNode.Next = last;
-            currentNode.Next.Previous = currentNode;
+//            ListNode last = new ListNode(N);
+//            last.Next = null;
 
-            //Next connections ready !!!
-            //currentNode = first;
-            //while (currentNode != last)
-            //{
-            //    Console.Write(currentNode.Value + " ");
-            //    currentNode = currentNode.Next;
-            //}
-            //Console.WriteLine(currentNode.Value);
+//            for (int i = 2; i < N; i++)
+//            {
+//                currentNode.Next = new ListNode(i);
+//                currentNode.Next.Previous = currentNode;
+//                currentNode = currentNode.Next;
+//            }
 
-            //Previous connections ready !!!
-            //currentNode = last;
-            //while (currentNode != first)
-            //{
-            //    Console.Write(currentNode.Value + " ");
-            //    currentNode = currentNode.Previous;
-            //}
-            //Console.WriteLine(currentNode.Value);
+//            currentNode.Next = last;
+//            currentNode.Next.Previous = currentNode;
 
-            for (int i = 0; i < nums.Length; i++)
-            {
-                int currentBorder = nums[i];
+//            //Next connections ready !!!
+//            //currentNode = first;
+//            //while (currentNode != last)
+//            //{
+//            //    Console.Write(currentNode.Value + " ");
+//            //    currentNode = currentNode.Next;
+//            //}
+//            //Console.WriteLine(currentNode.Value);
 
-                if (currentBorder != first.Value && currentBorder != last.Value)
-                {
-                    ListNode leftFirst = first;
-                    ListNode leftLast = first;
-                    while (leftLast.Next.Value != currentBorder)
-                    {
-                        leftLast = leftLast.Next;
-                    }
-                    ListNode currentBorderNode = leftLast.Next;
+//            //Previous connections ready !!!
+//            //currentNode = last;
+//            //while (currentNode != first)
+//            //{
+//            //    Console.Write(currentNode.Value + " ");
+//            //    currentNode = currentNode.Previous;
+//            //}
+//            //Console.WriteLine(currentNode.Value);
 
-                    ListNode rightFirst = currentBorderNode.Next;
-                    ListNode rightLast = rightFirst;
-                    while (rightLast != last)
-                    {
-                        rightLast = rightLast.Next;
-                    }
-                    //All connections ready!!!
-                    //Console.WriteLine(leftFirst.Value);
-                    //Console.WriteLine(leftLast.Value);
-                    //Console.WriteLine(currentBorderNode.Value);
-                    //Console.WriteLine(rightFirst.Value);
-                    //Console.WriteLine(rightLast.Value);
-                    currentBorderNode.Next = leftFirst;
-                    first.Previous = currentBorderNode;
-                    leftLast.Next = null;
-                    currentBorderNode.Previous = rightLast;
-                    rightLast.Next = currentBorderNode;
-                    rightFirst.Previous = null;
-                    first = rightFirst;
-                    last = leftLast;
+//            for (int i = 0; i < nums.Length; i++)
+//            {
+//                int currentBorder = nums[i];
 
-                    //Each shifting successful printing !!!
-                    //ListNode currNode = first;
-                    //while (currNode != null)
-                    //{
-                    //    Console.Write(currNode.Value + " ");
-                    //    currNode = currNode.Next;
-                    //}
+//                if (currentBorder != first.Value && currentBorder != last.Value)
+//                {
+//                    ListNode leftFirst = first;
+//                    ListNode leftLast = first;
+//                    while (leftLast.Next.Value != currentBorder)
+//                    {
+//                        leftLast = leftLast.Next;
+//                    }
+//                    ListNode currentBorderNode = leftLast.Next;
 
-                }
-                else if (currentBorder == first.Value)
-                {
-                    last.Next = first;
-                    ListNode newFirst = first.Next;
-                    newFirst.Previous = null;
-                    first.Next = null;
-                    first.Previous = last;
-                    last = first;
-                    first = newFirst;
-                    //Each shifting successful printing !!!
-                    //ListNode curNode = first;
-                    //while (curNode != null)
-                    //{
-                    //    Console.Write(curNode.Value + " ");
-                    //    curNode = curNode.Next;
-                    //}
-                }
-                else if (currentBorder == last.Value)
-                {
-                    last.Previous.Next = null;
-                    last.Next = first;
-                    first = last;
-                    last = last.Previous;
-                    first.Previous = null;
-                    //Each shifting successful printing !!!
-                    //ListNode curNode = first;
-                    //while (curNode != null)
-                    //{
-                    //    Console.Write(curNode.Value + " ");
-                    //    curNode = curNode.Next;
-                    //}
-                }
-            }
-            ListNode curNode = first;
-            while (curNode.Next != null)
-            {
-                Console.Write(curNode.Value + " ");
-                curNode = curNode.Next;
-            }
-            Console.WriteLine(curNode.Value);
-        }
-    }
+//                    ListNode rightFirst = currentBorderNode.Next;
+//                    ListNode rightLast = rightFirst;
+//                    while (rightLast != last)
+//                    {
+//                        rightLast = rightLast.Next;
+//                    }
+//                    //All connections ready!!!
+//                    //Console.WriteLine(leftFirst.Value);
+//                    //Console.WriteLine(leftLast.Value);
+//                    //Console.WriteLine(currentBorderNode.Value);
+//                    //Console.WriteLine(rightFirst.Value);
+//                    //Console.WriteLine(rightLast.Value);
+//                    currentBorderNode.Next = leftFirst;
+//                    first.Previous = currentBorderNode;
+//                    leftLast.Next = null;
+//                    currentBorderNode.Previous = rightLast;
+//                    rightLast.Next = currentBorderNode;
+//                    rightFirst.Previous = null;
+//                    first = rightFirst;
+//                    last = leftLast;
 
-    class ListNode
-    {
-        private int value;
-        private ListNode next;
-        private ListNode previous;
+//                    //Each shifting successful printing !!!
+//                    //ListNode currNode = first;
+//                    //while (currNode != null)
+//                    //{
+//                    //    Console.Write(currNode.Value + " ");
+//                    //    currNode = currNode.Next;
+//                    //}
 
-        public ListNode(int value)
-        {
-            this.Value = value;
-        }
+//                }
+//                else if (currentBorder == first.Value)
+//                {
+//                    last.Next = first;
+//                    ListNode newFirst = first.Next;
+//                    newFirst.Previous = null;
+//                    first.Next = null;
+//                    first.Previous = last;
+//                    last = first;
+//                    first = newFirst;
+//                    //Each shifting successful printing !!!
+//                    //ListNode curNode = first;
+//                    //while (curNode != null)
+//                    //{
+//                    //    Console.Write(curNode.Value + " ");
+//                    //    curNode = curNode.Next;
+//                    //}
+//                }
+//                else if (currentBorder == last.Value)
+//                {
+//                    last.Previous.Next = null;
+//                    last.Next = first;
+//                    first = last;
+//                    last = last.Previous;
+//                    first.Previous = null;
+//                    //Each shifting successful printing !!!
+//                    //ListNode curNode = first;
+//                    //while (curNode != null)
+//                    //{
+//                    //    Console.Write(curNode.Value + " ");
+//                    //    curNode = curNode.Next;
+//                    //}
+//                }
+//            }
+//            ListNode curNode = first;
+//            while (curNode.Next != null)
+//            {
+//                Console.Write(curNode.Value + " ");
+//                curNode = curNode.Next;
+//            }
+//            Console.WriteLine(curNode.Value);
+//        }
+//    }
 
-        public int Value { get { return this.value; } set { this.value = value; } }
-        public ListNode Next { get { return this.next; } set { this.next = value; } }
-        public ListNode Previous { get { return this.previous; } set { this.previous = value; } }
-    }
-}
+//    class ListNode
+//    {
+//        private int value;
+//        private ListNode next;
+//        private ListNode previous;
+
+//        public ListNode(int value)
+//        {
+//            this.Value = value;
+//        }
+
+//        public int Value { get { return this.value; } set { this.value = value; } }
+//        public ListNode Next { get { return this.next; } set { this.next = value; } }
+//        public ListNode Previous { get { return this.previous; } set { this.previous = value; } }
+//    }
+//}
+
+//Third Way - 72 points
+
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+
+//namespace Swappings
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            int N = Int32.Parse(Console.ReadLine());
+//            int[] nums = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
+
+//            Dictionary<int, ListNode> dictionary = new Dictionary<int, ListNode>();
+
+//            ListNode first = new ListNode(1);
+//            first.Previous = null;
+//            ListNode currentNode = first;
+//            dictionary.Add(currentNode.Value, currentNode);
+
+//            ListNode last = new ListNode(N);
+//            last.Next = null;
+
+//            for (int i = 2; i < N; i++)
+//            {
+//                currentNode.Next = new ListNode(i);
+//                currentNode.Next.Previous = currentNode;
+//                currentNode = currentNode.Next;
+//                dictionary.Add(currentNode.Value, currentNode);
+//            }
+
+//            currentNode.Next = last;
+//            currentNode.Next.Previous = currentNode;
+//            currentNode = currentNode.Next;
+//            dictionary.Add(currentNode.Value, currentNode);
+
+//            for (int i = 0; i < nums.Length; i++)
+//            {
+//                int currentBorder = nums[i];
+//                ListNode currentBorderNode = dictionary[currentBorder];
+//                if (currentBorderNode != first && currentBorderNode != last)
+//                {
+//                    ListNode newFirst = dictionary[currentBorderNode.Next.Value];
+//                    currentBorderNode.Next = first;
+//                    first.Previous = currentBorderNode;
+//                    ListNode newLast = currentBorderNode.Previous;
+//                    newLast.Next = null;
+//                    currentBorderNode.Previous.Next = null;
+
+//                    first = newFirst;
+//                    first.Previous = null;
+//                    last.Next = currentBorderNode;
+//                    currentBorderNode.Previous = last;
+//                    last = newLast;
+//                }
+//                else if (currentBorderNode == first)
+//                {
+//                    last.Next = first;
+//                    first.Previous = last;
+//                    last = first;
+//                    first = first.Next;
+//                    first.Previous = null;
+//                    last.Next = null;
+//                }
+//                else if (currentBorderNode == last)
+//                {
+//                    last.Next = first;
+//                    first = last;
+//                    last = last.Previous;
+//                    first.Next.Previous = first;
+//                    first.Previous = null;
+//                    last.Next = null;
+//                }
+//            }
+
+//            ListNode curNode = first;
+//            if (curNode != null)
+//            {
+//                Console.Write(curNode.Value);
+//                curNode = curNode.Next;
+//            }
+//            while (curNode != null)
+//            {
+//                Console.Write(" " + curNode.Value);
+//                curNode = curNode.Next;
+//            }
+//            Console.WriteLine();
+//        }
+//    }
+
+//    class ListNode
+//    {
+//        private int value;
+//        private ListNode next;
+//        private ListNode previous;
+
+//        public ListNode(int value)
+//        {
+//            this.Value = value;
+//        }
+
+//        public int Value { get { return this.value; } set { this.value = value; } }
+//        public ListNode Next { get { return this.next; } set { this.next = value; } }
+//        public ListNode Previous { get { return this.previous; } set { this.previous = value; } }
+//    }
+//}
