@@ -284,10 +284,6 @@
 //            ListNode first = new ListNode(1);
 //            first.Previous = null;
 
-//            //First Way Of NodesCreating
-//            //ListNode currentNode = first;
-//            //dictionary.Add(currentNode.Value, currentNode);
-
 //            ListNode last = new ListNode(N);
 //            last.Next = null;
 
@@ -303,20 +299,10 @@
 //                previousNode.Next = currentNode;
 //                currentNode.Previous = previousNode;
 //                dictionary.Add(i, currentNode);
-//                //First Way Of NodesCreating
-//                //currentNode.Next = new ListNode(i);
-//                //currentNode.Next.Previous = currentNode;
-//                //currentNode = currentNode.Next;
-//                //dictionary.Add(currentNode.Value, currentNode);
+                
 //            }
 //            dictionary[N - 1].Next = last;
 //            last.Previous = dictionary[N - 1];
-
-//            //First Way Of NodesCreating
-//            //currentNode.Next = last;
-//            //currentNode.Next.Previous = currentNode;
-//            //currentNode = currentNode.Next;
-//            //dictionary.Add(currentNode.Value, currentNode);
 
 //            for (int i = 0; i < nums.Length; i++)
 //            {
@@ -324,18 +310,6 @@
 //                ListNode currentBorderNode = dictionary[currentBorder];
 //                if (currentBorderNode != first && currentBorderNode != last)
 //                {
-//                    //ListNode newFirst = dictionary[currentBorderNode.Next.Value];
-//                    //currentBorderNode.Next = first;
-//                    //first.Previous = currentBorderNode;
-//                    //ListNode newLast = currentBorderNode.Previous;
-//                    //newLast.Next = null;
-//                    //currentBorderNode.Previous.Next = null;
-
-//                    //first = newFirst;
-//                    //first.Previous = null;
-//                    //last.Next = currentBorderNode;
-//                    //currentBorderNode.Previous = last;
-//                    //last = newLast;
 
 //                    ListNode newFirst = currentBorderNode.Next;
 //                    ListNode newLast = currentBorderNode.Previous;
@@ -381,7 +355,7 @@
 //                Console.Write(curNode.Value);
 //                curNode = curNode.Next;
 //            }
-//            for(; curNode != null;)
+//            for (; curNode != null;)
 //            {
 //                Console.Write(" " + curNode.Value);
 //                curNode = curNode.Next;
